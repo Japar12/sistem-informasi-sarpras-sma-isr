@@ -96,7 +96,7 @@ $query .= " GROUP BY be.id_barang_elektronik ORDER BY be.id_barang_elektronik DE
     ?>
     <div style="page-break-after:always;text-align:center;margin-top:5%;">
         <div style="line-height:5px;">
-            <h2>LAPORAN BARANG ELEKTRONIK SMA IGNATIUS SLAMET RIYADI</h2>
+            <h2>LAPORAN BARANG NONAKTIF SMA IGNATIUS SLAMET RIYADI</h2>
            <h4>
                 <?= date('d-m-Y', strtotime($tanggal_awal)); ?> s.d <?= date('d-m-Y', strtotime($tanggal_akhir)); ?>
             </h4>

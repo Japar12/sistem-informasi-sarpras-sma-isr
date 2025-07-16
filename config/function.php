@@ -273,18 +273,35 @@ function base_url($path = '') {
     return $protocol . $host . $scriptDir . '/' . ltrim($path, '/');
 }
 
+function base_url_qr($path = '') {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'];
 
-// function base_url($path = '') {
-//     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)
-//         ? "https://" : "http://";
+    // Cek jika di localhost
+    if ($host === 'localhost') {
+        // Tambahkan subfolder (misalnya 'inventaris') jika perlu
+        $base = $protocol . $host . '/inventaris/';
+    } else {
+        // Hosting: langsung gunakan domain root
+        $base = $protocol . $host . '/';
+    }
 
-//     $host = $_SERVER['HTTP_HOST'];
+    return $base . ltrim($path, '/');
+}
 
-//     // Ganti ini sesuai folder root project Anda
-//     $project_folder = 'https://sarpras.wuaze.com/';
+function base_url_img($path = '') {
+    $host = $_SERVER['HTTP_HOST'];
 
-//     $base = $protocol . $host . '/' . $project_folder . '/';
+    // Jika lokal, pakai path lokal
+    if ($host === 'localhost') {
+        return 'http://localhost/inventaris/' . ltrim($path, '/');
+    }
 
-//     return $base . ltrim($path, '/');
-// }
+    // Jika hosting (contoh: sarpras.wuaze.com)
+    return 'https://sarpras.wuaze.com/' . ltrim($path, '/');
+}
+
+
+
+
 ?>

@@ -123,6 +123,7 @@ function submit(id) {
                                 <td><?= !empty($row['serial_number']) ? htmlspecialchars($row['serial_number']) : '-'; ?></td>
                                 <td><?= !empty($row['tahun_pengadaan']) ? htmlspecialchars($row['tahun_pengadaan']) : '-'; ?></td>
                                 <td><?= !empty($row['tanggal_masuk']) ? htmlspecialchars($row['tanggal_masuk']) : '-'; ?></td>
+                                <td><?= !empty($row['tanggal_nonaktif']) ? htmlspecialchars($row['tanggal_nonaktif']) : '-'; ?></td>
                                 <td><?= !empty($row['nama_kondisi']) ? htmlspecialchars($row['nama_kondisi']) : '-'; ?></td>
                                 <td><?= !empty($row['nama_sumber_dana']) ? htmlspecialchars($row['nama_sumber_dana']) : '-'; ?></td>
                                 <td><?= !empty($row['keterangan_barang']) ? htmlspecialchars($row['keterangan_barang']) : '-'; ?></td>

@@ -30,10 +30,12 @@ $query = mysqli_query($con, "
     SELECT 
         tb_barang_elektronik.*, 
         tb_merek.nama_merek, 
-        tb_ruangan.nama_ruangan
+        tb_ruangan.nama_ruangan,
+        tb_sumber_dana.nama_sumber_dana
     FROM tb_barang_elektronik
     LEFT JOIN tb_merek ON tb_barang_elektronik.id_merek = tb_merek.id_merek
     LEFT JOIN tb_ruangan ON tb_barang_elektronik.id_ruangan = tb_ruangan.id_ruangan
+    LEFT JOIN tb_sumber_dana ON tb_barang_elektronik.id_sumber_dana = tb_sumber_dana.id_sumber_dana
     WHERE tb_barang_elektronik.id_barang_elektronik = '$id'
     LIMIT 1
 ");
@@ -141,14 +143,10 @@ if (!$data) {
         <h3 class="text-center">Detail Barang Elektronik</h3>
 
         <?php
-        // Base URL manual untuk detail.php
-        $base_url_manual = "http://sarpras.wuaze.com/";
-
-        // Kemudian di bagian HTML, ganti pemanggilan base_url() jadi pakai $base_url_manual:
 
         if (!empty($data['gambar'])): ?>
             <div class="img-container">
-                <img src="<?= $base_url_manual . 'assets/uploads/img/' . rawurlencode($data['gambar']) ?>" 
+                <img src="<?= base_url_img() . 'assets/uploads/img/' . rawurlencode($data['gambar']) ?>" 
                     alt="Gambar Barang" 
                     class="item-image" />
             </div>
@@ -189,7 +187,7 @@ if (!$data) {
 
         <div class="row mb-3">
             <div class="col-md-4 label">Sumber Dana</div>
-            <div class="col-md-8 value"><?= nl2br(htmlspecialchars($data['sumber_dana'])) ?></div>
+            <div class="col-md-8 value"><?= nl2br(htmlspecialchars($data['nama_sumber_dana'])) ?></div>
         </div>
 
     </div>
@@ -203,3 +201,4 @@ if (!$data) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+            
